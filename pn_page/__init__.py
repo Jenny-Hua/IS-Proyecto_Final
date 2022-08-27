@@ -6,7 +6,16 @@ import uuid
 import numpy as np
 from flask import Flask, jsonify, make_response, render_template, request, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
+
+# Importar objeto de módulo Ponencia
+from .ponencia import ponencia
+
 app = Flask(__name__)
+
+# Configuración BluePrints
+app.register_blueprint(ponencia)
+
+# SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SECRET_KEY'] = "random string"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
